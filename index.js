@@ -59,7 +59,7 @@ function collisionDetection() {
         for(var r = 0; r < brickRowCount; r++) {
             var b = bricks[c][r];
             if(b.status === 1) {
-                if(x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                if(x > b.x + ballRadius && x < b.x + brickWidth + ballRadius && y > b.y + ballRadius && y < b.y + brickHeight + ballRadius) {
                     dy = -dy;
                     b.status = 0;
                     score++;
@@ -130,7 +130,7 @@ function draw() {
     if(y + dy < ballRadius) {
         dy = -dy;
     }
-    else if(y + dy > canvas.height - ballRadius) {
+    else if(y + dy > canvas.height - ballRadius - paddleHeight) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
         }
@@ -143,8 +143,8 @@ function draw() {
             else {
                 x = canvas.width/2;
                 y = canvas.height-30;
-                dx = 3;
-                dy = -3;
+                dx = 2;
+                dy = -2;
                 paddleX = (canvas.width-paddleWidth)/2;
             }
         }
