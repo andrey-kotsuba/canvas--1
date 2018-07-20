@@ -56,7 +56,7 @@ function mouseMoveHandler(e) {
 }
 function collisionDetection() {
     for(var c = 0; c < brickColumnCount; c++) {
-        for(var r = 0; r<brickRowCount; r++) {
+        for(var r = 0; r < brickRowCount; r++) {
             var b = bricks[c][r];
             if(b.status === 1) {
                 if(x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
@@ -82,13 +82,13 @@ function drawBall() {
 }
 function drawPaddle() {
     ctx.beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
 }
 function drawBricks() {
-    for(var c  =0; c < brickColumnCount; c++) {
+    for(var c = 0; c < brickColumnCount; c++) {
         for(var r = 0; r < brickRowCount; r++) {
             if(bricks[c][r].status === 1) {
                 var brickX = (r * (brickWidth + brickPadding)) + brickOffsetLeft;
@@ -124,13 +124,13 @@ function draw() {
     drawLives();
     collisionDetection();
 
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+    if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
     if(y + dy < ballRadius) {
         dy = -dy;
     }
-    else if(y + dy > canvas.height-ballRadius) {
+    else if(y + dy > canvas.height - ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
         }
